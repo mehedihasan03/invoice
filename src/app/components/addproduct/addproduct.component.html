@@ -1,0 +1,65 @@
+<div class="hold-transition register-page">
+    <div class="register-box">
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <h3 class="h1">Add Product</h3>
+        </div>
+        <div class="card-body">
+          <p class="login-box-msg"><b> Add a new Product </b></p>
+    
+          <form (ngSubmit)="isSave? addProduct():updateProduct()">
+            
+            <div class="input-group mt-2">
+              <input type="text" id="pname" name="pname" class="form-control" [(ngModel)]="product.pname"
+              placeholder="Product Name">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-signature"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group mt-2">
+                <select name="cname" id="cname" class="form-control"
+                [(ngModel)]="selectedNumber" (ngModelChange)="onRowClick()">
+                  <option value="">-select category-</option>
+                  <option *ngFor="let cat of categoryItem; index as i;" value="{{cat.cname}}">{{cat.cname}}</option>
+                  
+                </select>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-product-hunt"></span>
+                </div>
+              </div>
+            </div>
+               
+           
+            <div class="input-group mt-2">
+              <input type="number" id="price" name="price" class="form-control" [(ngModel)]="product.price"
+              placeholder="Product Price">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-tag"></span>
+                </div>
+              </div>
+            </div>
+               
+           
+
+            
+          
+            <div class="row">
+              
+              <!-- /.col -->
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block mt-5">Add Product</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.form-box -->
+      </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    </div>

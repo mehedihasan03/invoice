@@ -1,0 +1,36 @@
+<div class="hold-transition register-page">
+    <div class="register-box">
+      <div class="card card-outline card-warning">
+        <div class="card-header text-center">
+          <h3 class="h1">Add Category</h3>
+        </div>
+        <div class="card-body">
+          <p class="login-box-msg"><b> Add a new Category </b></p>
+    
+          <form (ngSubmit)="isSave? addCategory():updateCategory()">
+            
+            <div class="input-group">
+              <input type="text" id="cname" name="cname" class="form-control" [(ngModel)]="category.cname"
+              placeholder="Category Name">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-bullseye"></span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="row">
+              
+              <!-- /.col -->
+              <div class="col-12">
+                <button type="submit" class="btn btn-warning btn-block mt-5">Add Category</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.form-box -->
+      </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    </div>
