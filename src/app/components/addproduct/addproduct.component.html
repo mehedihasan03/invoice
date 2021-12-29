@@ -21,7 +21,7 @@
 
             <div class="input-group mt-2">
                 <select name="cname" id="cname" class="form-control"
-                [(ngModel)]="selectedNumber" (ngModelChange)="onRowClick()">
+                [(ngModel)]="selectedCategoty" (ngModelChange)="onRowClick()">
                   <option value="">-select category-</option>
                   <option *ngFor="let cat of categoryItem; index as i;" value="{{cat.cname}}">{{cat.cname}}</option>
                   

@@ -19,14 +19,6 @@ export class AddproductComponent implements OnInit {
     this.getCategories()
     console.log(this.categoryItem);
 
-  }
-
-  selectedNumber: String = '';
-
-
-  onRowClick() {
-    console.log(this.selectedNumber)
-
     if (history.state.isSave != undefined) {
       this.product = history.state.prod
       this.isSave = history.state.isSave
@@ -34,6 +26,17 @@ export class AddproductComponent implements OnInit {
       console.log(history.state.prod);
 
     }
+
+  }
+
+  selectedCategoty: String = '';
+
+
+  onRowClick() {
+    console.log(this.selectedCategoty)
+    this.product.cname = this.selectedCategoty
+
+   
   }
 
   getCategories() {

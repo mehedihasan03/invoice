@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../addproduct/product.model';
 
 @Component({
   selector: 'app-productlist',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ProductlistComponent implements OnInit {
 
-  Products: any
+  product = new Product()
+  products: any
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -21,19 +23,18 @@ export class ProductlistComponent implements OnInit {
     const headers = { 'content-type': 'application/json' };
     this.http.get<any>('http://localhost:9988/product/getAll', { headers })
       .subscribe(map => {
-        console.log(map.Data);
 
-        this.Products = map.Data;
+        this.products = map.Data;
 
       })
   }
 
   editProduct(pro: any) {
 
-    this.Products.pname = pro.pname
-    this.Products.cname = pro.cname
-    this.Products.price = pro.price
-    console.log(this.Products);
+    this.product.pname = pro.pname
+    this.product.cname = pro.cname
+    this.product.price = pro.price
+    console.log(this.product);
     
 
     this.router.navigate(['addProduct'], { state: { prod: pro, isSave: false } })
