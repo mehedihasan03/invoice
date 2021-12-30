@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddcategoryComponent } from './components/addcategory/addcategory.component';
+import { AddcustomerComponent } from './components/addcustomer/addcustomer.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
 import { CalenderComponent } from './components/calender/calender.component';
 import { CategorylistComponent } from './components/categorylist/categorylist.component';
+import { CustomerlistComponent } from './components/customerlist/customerlist.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -19,7 +21,8 @@ const routes: Routes = [
     {path: "", component: DashboardComponent}, {path: "category", component: AddcategoryComponent},
     {path: "invoice", component: InvoiceComponent}, {path: "categoryList", component: CategorylistComponent},
     {path: "addProduct", component: AddproductComponent}, {path: "productList", component: ProductlistComponent},
-    {path: "calender", component: CalenderComponent}
+    {path: "calender", component: CalenderComponent}, {path: "addCustomer", component: AddcustomerComponent},
+    {path: "customerList", component: CustomerlistComponent}
   ]}
 ];
 
