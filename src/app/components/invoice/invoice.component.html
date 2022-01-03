@@ -57,7 +57,7 @@ data-bs-target="#exampleModal">
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Customer List</h5>
@@ -69,19 +69,21 @@ data-bs-target="#exampleModal">
             <tr>
               <td>Customer ID</td>
               <td>Customer Name</td>
+              <td>Customer Address</td>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cus of customers; index as i;">
+            <tr *ngFor="let cus of customers; index as i;" (click)="selectedRow(cus)">
               <td>{{cus.id}}</td> 
               <td>{{cus.name}}</td>
+              <td>{{cus.address}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">ADD</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCustomerDetails()">ADD</button>
       </div>
     </div>
   </div>
@@ -90,10 +92,10 @@ data-bs-target="#exampleModal">
 <!-- /Modal END-->
 
                   <address>
-                    <strong></strong><br>
-                    <br>
-                    <br>
-                    <br>
+                    <strong>{{customer.name}}</strong><br>
+                    {{customer.address}}<br>
+                    {{customer.phone}}<br>
+                    {{customer.email}}<br>
                     
                   </address>
                 </div>

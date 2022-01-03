@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -8,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   customers: any
-
+  customer: any
   ngOnInit(): void {
   }
 
+  selectedRow(cus: any){
+    console.log(cus);
+    this.customer = cus
+  }
 
+  addCustomerDetails(){
+    this.customer = this.customer
+    
+  }
 
 
   getAllCustomer() {
