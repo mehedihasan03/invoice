@@ -23,7 +23,7 @@
                 <select name="cname" id="cname" class="form-control"
                 [(ngModel)]="selectedCategoty" (ngModelChange)="onRowClick()">
                   <option value="">-select category-</option>
-                  <option *ngFor="let cat of categoryItem; index as i;" value="{{cat.cname}}">{{cat.cname}}</option>
+                  <option *ngFor="let cat of categoryItems; index as i;" [selected] ="product.cname==cat.cname" value="{{cat.cname}}">{{cat.cname}}</option>
                   
                 </select>
               <div class="input-group-append">

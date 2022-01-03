@@ -10,41 +10,32 @@ import { Product } from './product.model';
 export class AddproductComponent implements OnInit {
 
   product = new Product()
-  categoryItem: any
+  categoryItems: any
   isSave: boolean = true
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getCategories()
-    console.log(this.categoryItem);
-
     if (history.state.isSave != undefined) {
       this.product = history.state.prod
       this.isSave = history.state.isSave
-
+      
       console.log(history.state.prod);
-
     }
-
   }
 
   selectedCategoty: String = '';
 
-
   onRowClick() {
-    console.log(this.selectedCategoty)
     this.product.cname = this.selectedCategoty
-
-   
   }
 
   getCategories() {
     const headers = { 'content-type': 'application/json' };
     this.http.get<any>('http://localhost:9988/category/getAll', { headers })
       .subscribe(map => {
-        console.log(map.Data);
-        this.categoryItem = map.Data;
+        this.categoryItems = map.Data;
       })
   }
 
@@ -63,7 +54,6 @@ export class AddproductComponent implements OnInit {
   }
 
   updateProduct() {
-
     const headers = { 'content-type': 'application/json' };
     this.http.post<any>("http://localhost:9988/product/update", JSON.stringify(this.product), { headers: headers })
       .subscribe(data => {
@@ -72,8 +62,6 @@ export class AddproductComponent implements OnInit {
         this.isSave = true
       }
       )
-
   }
-
 
 }

@@ -23,10 +23,12 @@
               <!-- title row -->
               <div class="row">
                 <div class="col-12">
-                  <h4>
-                    <i class="fas fa-globe"></i> AdminLTE, Inc.
-                    <small class="float-right">Date: 2/10/2014</small>
-                  </h4>
+                  <h5>
+                    <i class="fas fa-globe"></i> NCLC JEE-47
+                    <small class="float-right">
+                      <input type="datetime-local" name="date" id="date">
+                    </small>
+                  </h5>
                 </div>
                 <!-- /.col -->
               </div>
@@ -35,22 +37,64 @@
                 <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                    <strong>Admin, Inc.</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (804) 123-5432<br>
-                    Email: info@almasaeedstudio.com
+                    <strong>NCLC JEE-47</strong><br>
+                    Momtaz Plaza,Dhanmondi-4<br>
+                    Dhanmondi, Dhaka-1205<br>
+                    Phone: (555) 539-1037<br>
+                    Email: nclc.round47@example.com
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  To
+                  To,
+                  <!-- /Modal Start-->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" (click)="getAllCustomer()"
+data-bs-target="#exampleModal">
+  Add Customer
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Customer List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Customer ID</td>
+              <td>Customer Name</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cus of customers; index as i;">
+              <td>{{cus.id}}</td> 
+              <td>{{cus.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /Modal END-->
+
                   <address>
-                    <strong>John Doe</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (555) 539-1037<br>
-                    Email: john.doe@example.com
+                    <strong></strong><br>
+                    <br>
+                    <br>
+                    <br>
+                    
                   </address>
                 </div>
                 <!-- /.col -->
@@ -64,6 +108,8 @@
                 <!-- /.col -->
               </div>
               <!-- /.row -->
+
+
 
               <!-- Table row -->
               <div class="row">
@@ -179,3 +225,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
