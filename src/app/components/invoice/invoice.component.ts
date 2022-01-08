@@ -9,19 +9,39 @@ import { Router } from '@angular/router';
 })
 export class InvoiceComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   customers: any
   customer: any
-  products:any
+  products: any
   product: any
-
+  searchQueryCustomer: any
+  searchQueryProduct: any
 
   ngOnInit(): void {
   }
 
-  selectedCustomerRow(cus: any){
-    console.log(cus);
+
+  searchCustomers() {
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/customer/search?searchText=' + this.searchQueryCustomer, { headers })
+      .subscribe(map => {
+        this.customers = map.Data;
+        console.log(map.Data);
+        
+      })
+  }
+
+  searchProducts() {
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/product/search?searchText=' + this.searchQueryProduct, { headers })
+      .subscribe(map => {
+        this.products = map.Data;
+        console.log(map.Data)
+      })
+  }
+
+  selectedCustomerRow(cus: any) {
     this.customer = cus
   }
 
@@ -31,13 +51,10 @@ export class InvoiceComponent implements OnInit {
     this.http.get<any>('http://localhost:9988/customer/getAll', { headers })
       .subscribe(map => {
         this.customers = map.Data;
-        console.log(map.Data);
-        
       })
   }
 
-  selectedProductRow(pro: any){
-    console.log(pro);
+  selectedProductRow(pro: any) {
     this.product = pro
   }
 
@@ -47,7 +64,7 @@ export class InvoiceComponent implements OnInit {
       .subscribe(map => {
         this.products = map.Data;
         console.log(map.Data);
-        
+
       })
   }
 
