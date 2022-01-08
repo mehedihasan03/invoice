@@ -13,10 +13,20 @@ export class CategorylistComponent implements OnInit {
 
   Categories: any;
   isGetCategory: boolean = true
+  searchQuery: any
 
   ngOnInit(): void {
     this.getCategories();
   }
+
+  searchItems(){
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/category/search?searchText=' + this.searchQuery, { headers })
+      .subscribe(map => {
+        this.Categories = map.Data;
+      })
+  }
+
 
   getCategories() {
     const headers = { 'content-type': 'application/json' };

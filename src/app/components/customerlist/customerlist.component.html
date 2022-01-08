@@ -1,71 +1,75 @@
 <section class="content-header mt-5">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1></h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right mt-5">
-            
-          </ol>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1></h1>
       </div>
-    </div><!-- /.container-fluid -->
-  </section>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-5">
+
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
 
 
 
 
 <div class="container ">
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-            <div class="card">
-    <div class="card-header">
-      <h3 class="card-title fs-1 fw-bolder text-dark">Customer List</h3>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Customer ID</th>
-            <th>Customer Name</th>
-            <th>Customer Email</th>
-            <th>Customer Phone</th>
-            <th>Customer Address</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let cus of customers; index as i;">
-              <td>{{cus.id}}</td> 
-              <td>{{cus.name}}</td>
-               <td>{{cus.email}}</td>
-               <td>{{cus.phone}}</td>
-               <td>{{cus.address}}</td>
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title fs-1 fw-bolder text-dark">Customer List</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="col-md-6 float-end">
+            <form class="d-flex mb-2">
+              <input class="form-control me-2" type="search" [(ngModel)]="searchQuery" name="searchText" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" (click)="searchItems()">Search</button>
+            </form>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Phone</th>
+                <th>Customer Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cus of customers; index as i;">
+                <td>{{cus.id}}</td>
+                <td>{{cus.name}}</td>
+                <td>{{cus.email}}</td>
+                <td>{{cus.phone}}</td>
+                <td>{{cus.address}}</td>
                 <td>
-                    <button type="button" (click)="editCustomer(cus)" class="btn btn-secondary">Edit</button>
-                    ||
-                    <button type="button" (click)="deleteCustomer(cus)" class="btn btn-danger">Delete</button>
+                  <button type="button" (click)="editCustomer(cus)" class="btn btn-secondary">Edit</button>
+                  ||
+                  <button type="button" (click)="deleteCustomer(cus)" class="btn btn-danger">Delete</button>
                 </td>
-            </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer clearfix">
-      <ul class="pagination pagination-sm m-0 float-right">
-        <li class="page-item"><a class="page-link">&laquo;</a></li>
-        <li class="page-item"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link">2</a></li>
-        <li class="page-item"><a class="page-link">3</a></li>
-        <li class="page-item"><a class="page-link">&raquo;</a></li>
-      </ul>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+          <ul class="pagination pagination-sm m-0 float-right">
+            <li class="page-item"><a class="page-link">&laquo;</a></li>
+            <li class="page-item"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+            <li class="page-item"><a class="page-link">3</a></li>
+            <li class="page-item"><a class="page-link">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.card -->
     </div>
   </div>
-  <!-- /.card -->
-        </div>
-    </div>
 </div>
-
-

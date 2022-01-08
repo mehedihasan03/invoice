@@ -13,17 +13,16 @@ export class InvoiceComponent implements OnInit {
 
   customers: any
   customer: any
+  products:any
+  product: any
+
+
   ngOnInit(): void {
   }
 
-  selectedRow(cus: any){
+  selectedCustomerRow(cus: any){
     console.log(cus);
     this.customer = cus
-  }
-
-  addCustomerDetails(){
-    this.customer = this.customer
-    
   }
 
 
@@ -36,4 +35,21 @@ export class InvoiceComponent implements OnInit {
         
       })
   }
+
+  selectedProductRow(pro: any){
+    console.log(pro);
+    this.product = pro
+  }
+
+  getAllProduct() {
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/product/getAll', { headers })
+      .subscribe(map => {
+        this.products = map.Data;
+        console.log(map.Data);
+        
+      })
+  }
+
+
 }

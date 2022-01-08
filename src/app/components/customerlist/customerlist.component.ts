@@ -12,13 +12,23 @@ export class CustomerlistComponent implements OnInit {
 
   customer = new Customer()
   customers: any
-
+  searchQuery: any
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCustomer()
   }
+
+
+  searchItems(){
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/customer/search?searchText=' + this.searchQuery, { headers })
+      .subscribe(map => {
+        this.customers = map.Data;
+      })
+  }
+
 
   getAllCustomer() {
     const headers = { 'content-type': 'application/json' };

@@ -48,7 +48,7 @@
                 <div class="col-sm-4 invoice-col">
                   To,
                   <!-- /Modal Start-->
-
+<br/>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" (click)="getAllCustomer()"
 data-bs-target="#exampleModal">
@@ -64,7 +64,15 @@ data-bs-target="#exampleModal">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped">
+
+        <div class="col-md-8 float-end">
+          <form class="d-flex mb-2">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <td>Customer ID</td>
@@ -73,7 +81,7 @@ data-bs-target="#exampleModal">
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cus of customers; index as i;" (click)="selectedRow(cus)">
+            <tr *ngFor="let cus of customers" data-bs-dismiss="modal" (click)="selectedCustomerRow(cus)">
               <td>{{cus.id}}</td> 
               <td>{{cus.name}}</td>
               <td>{{cus.address}}</td>
@@ -83,7 +91,6 @@ data-bs-target="#exampleModal">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCustomerDetails()">ADD</button>
       </div>
     </div>
   </div>
@@ -112,8 +119,59 @@ data-bs-target="#exampleModal">
               <!-- /.row -->
 
 
-
               <!-- Table row -->
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-xl" (click)="getAllProduct()">
+                Add Product
+              </button>
+
+              <div class="">
+                <div class="modal fade" id="modal-xl">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Product List</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="col-md-4 float-end">
+                          <form class="d-flex mb-2">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                          </form>
+                        </div>
+                        <table class="table table-info table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <td>Product ID</td>
+                              <td>Product Name</td>
+                              <td>Category Name</td>
+                              <td>Price</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let pro of products" data-bs-dismiss="modal" (click)="selectedProductRow(pro)">
+                              <td>{{pro.pid}}</td> 
+                              <td>{{pro.pname}}</td>
+                              <td>{{pro.cname}}</td>
+                              <td>{{pro.price}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+              </div>
+
+
               <div class="row">
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">

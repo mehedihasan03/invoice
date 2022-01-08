@@ -12,11 +12,19 @@ export class ProductlistComponent implements OnInit {
 
   product = new Product()
   products: any
-
+searchQuery:any
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllProduct()
+  }
+
+  searchItems(){
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/product/search?searchText=' + this.searchQuery, { headers })
+      .subscribe(map => {
+        this.products = map.Data;
+      })
   }
 
   getAllProduct() {
