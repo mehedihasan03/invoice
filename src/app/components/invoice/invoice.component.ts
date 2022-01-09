@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
+
+
 
 @Component({
   selector: 'app-invoice',
@@ -43,8 +46,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   selectedCustomerRow(cus: any) {
-    this.customer = cus
-    
+    this.customer = cus    
   }
 
 
@@ -62,7 +64,7 @@ export class InvoiceComponent implements OnInit {
     
     this.productArr.push(this.product)
     console.log(this.productArr);
-    
+    $("#productClose").click();
   }
 
   getAllProduct() {
