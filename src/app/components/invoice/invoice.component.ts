@@ -17,6 +17,7 @@ export class InvoiceComponent implements OnInit {
   product: any
   searchQueryCustomer: any
   searchQueryProduct: any
+  productArr: any = []
 
   ngOnInit(): void {
   }
@@ -43,6 +44,7 @@ export class InvoiceComponent implements OnInit {
 
   selectedCustomerRow(cus: any) {
     this.customer = cus
+    
   }
 
 
@@ -56,6 +58,11 @@ export class InvoiceComponent implements OnInit {
 
   selectedProductRow(pro: any) {
     this.product = pro
+    console.log(this.product);
+    
+    this.productArr.push(this.product)
+    console.log(this.productArr);
+    
   }
 
   getAllProduct() {
@@ -68,5 +75,9 @@ export class InvoiceComponent implements OnInit {
       })
   }
 
+
+  removeProduct(pArr:any){
+    this.productArr.splice(this.productArr.indexOf(pArr), 1)
+  }
 
 }

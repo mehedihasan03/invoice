@@ -192,13 +192,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>{{products.pid}}</td>
-                      <td>{{products.pname}}</td>
-                      <td>{{products.cname}}</td>
-                      <td>{{products.price}}</td>
+                    <tr *ngFor="let pArr of productArr; index as i;">
+                      <td>{{pArr.pid}}</td>
+                      <td>{{pArr.pname}}</td>
+                      <td>{{pArr.cname}}</td>
+                      <td>{{pArr.price}}</td>
                       <td>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button type="button" class="btn btn-danger" (click)="removeProduct(pArr)">Remove</button>
                       </td>
                     </tr>
 
@@ -232,19 +232,19 @@
                   <table class="table">
                     <tr>
                       <th style="width:50%">Subtotal:</th>
-                      <td>$250.30</td>
+                      <td></td>
                     </tr>
                     <tr>
-                      <th>Tax (9.3%)</th>
-                      <td>$10.34</td>
+                      <th>Tax (15%)</th>
+                      <td></td>
                     </tr>
                     <tr>
                       <th>Shipping:</th>
-                      <td>$5.80</td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th>Total:</th>
-                      <td>$265.24</td>
+                      <td></td>
                     </tr>
                   </table>
                 </div>
