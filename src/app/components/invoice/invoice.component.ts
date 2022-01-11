@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { ProductInvoice } from './invoice.model';
 
 
 
@@ -14,13 +15,15 @@ export class InvoiceComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  productInvoice = new ProductInvoice()
   customers: any
   customer: any
   products: any
   product: any
   searchQueryCustomer: any
   searchQueryProduct: any
-  productArr: any = []
+  selectedProducts: ProductInvoice[] = []
+
 
   ngOnInit(): void {
   }
@@ -32,7 +35,7 @@ export class InvoiceComponent implements OnInit {
       .subscribe(map => {
         this.customers = map.Data;
         console.log(map.Data);
-        
+
       })
   }
 
@@ -46,7 +49,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   selectedCustomerRow(cus: any) {
-    this.customer = cus    
+    this.customer = cus
   }
 
 
@@ -58,13 +61,31 @@ export class InvoiceComponent implements OnInit {
       })
   }
 
+
   selectedProductRow(pro: any) {
     this.product = pro
-    console.log(this.product);
-    
-    this.productArr.push(this.product)
-    console.log(this.productArr);
-    $("#productClose").click();
+
+    let isProductsExists = (this.selectedProducts.some(p => {
+      if(p.pid == pro.pid){
+        p.quantity +=1
+        p.price +=p.price
+        $("#productClose").click();
+        return true
+      }else return false;
+    }));
+    if (!isProductsExists) {
+
+      this.selectedProducts.push(this.product)
+      console.log(this.selectedProducts);
+      $("#productClose").click();
+
+    } 
+
+  }
+
+
+  increaseQuantity(){
+
   }
 
   getAllProduct() {
@@ -78,8 +99,8 @@ export class InvoiceComponent implements OnInit {
   }
 
 
-  removeProduct(pArr:any){
-    this.productArr.splice(this.productArr.indexOf(pArr), 1)
+  removeProduct(pArr: any) {
+    this.selectedProducts.splice(this.selectedProducts.indexOf(pArr), 1)
   }
 
 }

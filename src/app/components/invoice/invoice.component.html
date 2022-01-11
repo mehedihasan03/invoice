@@ -184,7 +184,7 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Product ID</th>
+                      <th>Quantity</th>
                       <th>Product name</th>
                       <th>Category</th>
                       <th>price</th>
@@ -192,8 +192,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let pArr of productArr; index as i;">
-                      <td>{{pArr.pid}}</td>
+                    <tr *ngFor="let pArr of selectedProducts; index as i;">
+                      <td>{{pArr.quantity}} &nbsp; &nbsp; &nbsp; &nbsp; <button class="btn btn-secondary btn-sm"
+                        (click)="increaseQuantity()">+</button></td>
                       <td>{{pArr.pname}}</td>
                       <td>{{pArr.cname}}</td>
                       <td>{{pArr.price}}</td>
