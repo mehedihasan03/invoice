@@ -68,7 +68,7 @@ export class InvoiceComponent implements OnInit {
     let isProductsExists = (this.selectedProducts.some(p => {
       if(p.pid == pro.pid){
         p.quantity +=1
-        p.price +=p.price
+        p.price +=pro.price
         $("#productClose").click();
         return true
       }else return false;
@@ -85,7 +85,7 @@ export class InvoiceComponent implements OnInit {
 
 
   increaseQuantity(){
-
+    
   }
 
   getAllProduct() {
