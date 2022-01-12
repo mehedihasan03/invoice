@@ -23,6 +23,7 @@ export class SignupComponent implements OnInit {
       this.http.post<any>("http://localhost:9988/user/save", JSON.stringify(this.user), { headers: headers })
         .subscribe(data => {
         alert("Registrtion successfull")
+        this.sendEmail()
         this.user = new User();
         
         },err =>{
@@ -30,5 +31,17 @@ export class SignupComponent implements OnInit {
        }
         )
     } 
+  }
+
+  sendEmail(){
+    const to = {
+      "receiver" : this.user.email
+  }
+    const header = {'content-type': 'application/json'}
+    this.http.post<any>("http://localhost:9988/sendAnEmail", to, {headers:header}).subscribe(res=>{
+      console.log(res);
+      
+    })
+
   }
 }
