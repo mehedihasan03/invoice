@@ -30,7 +30,9 @@ export class SignupComponent implements OnInit {
           alert(err.error.text)
        }
         )
-    } 
+    } else{
+      alert("Password does not matched")
+    }
   }
 
   sendEmail(){

@@ -121,8 +121,7 @@
               <!-- /.col -->
             </div>
             <!-- /.row -->
-
-
+            
             <!-- Table row -->
             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-xl"
               (click)="getAllProduct()">
@@ -192,14 +191,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let pArr of selectedProducts; index as i;">
-                      <td>{{pArr.quantity}} &nbsp; &nbsp; &nbsp; &nbsp; <button class="btn btn-secondary btn-sm"
-                        (click)="increaseQuantity()">+</button></td>
-                      <td>{{pArr.pname}}</td>
-                      <td>{{pArr.cname}}</td>
-                      <td>{{pArr.price}}</td>
+                    <tr *ngFor="let product of selectedProducts; index as i;">
+                      <td>{{product.quantity}} &nbsp; &nbsp; &nbsp; &nbsp; <button class="btn btn-secondary btn-sm"
+                        (click)="increaseQuantity(product)">+</button></td>
+                      <td>{{product.pname}}</td>
+                      <td>{{product.cname}}</td>
+                      <td>{{product.price * product.quantity}}</td>
                       <td>
-                        <button type="button" class="btn btn-danger" (click)="removeProduct(pArr)">Remove</button>
+                        <button type="button" class="btn btn-danger" (click)="removeProduct(product)">Remove</button>
                       </td>
                     </tr>
 
@@ -233,7 +232,7 @@
                   <table class="table">
                     <tr>
                       <th style="width:50%">Subtotal:</th>
-                      <td></td>
+                      <td>{{subtotal}}</td>
                     </tr>
                     <tr>
                       <th>Tax (15%)</th>

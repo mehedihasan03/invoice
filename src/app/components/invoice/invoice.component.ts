@@ -24,6 +24,7 @@ export class InvoiceComponent implements OnInit {
   searchQueryProduct: any
   selectedProducts: ProductInvoice[] = []
 
+  subtotal = 0
 
   ngOnInit(): void {
   }
@@ -35,7 +36,6 @@ export class InvoiceComponent implements OnInit {
       .subscribe(map => {
         this.customers = map.Data;
         console.log(map.Data);
-
       })
   }
 
@@ -64,28 +64,36 @@ export class InvoiceComponent implements OnInit {
 
   selectedProductRow(pro: any) {
     this.product = pro
-
     let isProductsExists = (this.selectedProducts.some(p => {
-      if(p.pid == pro.pid){
-        p.quantity +=1
-        p.price +=pro.price
+      if (p.pid == pro.pid) {
+        p.quantity += 1
         $("#productClose").click();
+        this.updateSubtotal()
         return true
-      }else return false;
+      } else return false;
     }));
     if (!isProductsExists) {
-
       this.selectedProducts.push(this.product)
       console.log(this.selectedProducts);
       $("#productClose").click();
+      this.updateSubtotal()
+    }
 
-    } 
+  this.updateSubtotal()
+
 
   }
 
+  updateSubtotal() {
+    this.subtotal = 0
+    this.selectedProducts.forEach(element => {
+      this.subtotal += element.price * element.quantity;
+    });
+  }
+  increaseQuantity(product: ProductInvoice) {
+    product.quantity++
+    this.updateSubtotal()
 
-  increaseQuantity(){
-    
   }
 
   getAllProduct() {
@@ -94,13 +102,12 @@ export class InvoiceComponent implements OnInit {
       .subscribe(map => {
         this.products = map.Data;
         console.log(map.Data);
-
       })
   }
 
 
   removeProduct(pArr: any) {
     this.selectedProducts.splice(this.selectedProducts.indexOf(pArr), 1)
+    this.updateSubtotal()
   }
-
 }
