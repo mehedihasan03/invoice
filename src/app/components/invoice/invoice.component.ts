@@ -25,6 +25,10 @@ export class InvoiceComponent implements OnInit {
   selectedProducts: ProductInvoice[] = []
 
   subtotal = 0
+  vat = 0
+  total = 0
+  shipping = 0
+
 
   ngOnInit(): void {
   }
@@ -78,20 +82,39 @@ export class InvoiceComponent implements OnInit {
       $("#productClose").click();
       this.updateSubtotal()
     }
-
-  this.updateSubtotal()
-
-
+    this.updateSubtotal()
   }
 
   updateSubtotal() {
     this.subtotal = 0
     this.selectedProducts.forEach(element => {
       this.subtotal += element.price * element.quantity;
+      this.vat = this.subtotal * (15 / 100)
+      this.total = this.subtotal + this.vat + this.shipping
+       
+      if(this.subtotal > 0){
+        this.shipping = 100
+      }
+      if(this.subtotal > 10000){
+        this.shipping = 300
+      }
+      if(this.subtotal > 50000){
+        this.shipping = 500
+      }
+      if(this.subtotal > 100000){
+        this.shipping = 800
+      }
     });
   }
+
+
   increaseQuantity(product: ProductInvoice) {
     product.quantity++
+    this.updateSubtotal()
+  }
+
+  decreaseQuantity(product: ProductInvoice) {
+    product.quantity--
     this.updateSubtotal()
 
   }

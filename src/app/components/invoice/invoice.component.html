@@ -192,8 +192,11 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let product of selectedProducts; index as i;">
-                      <td>{{product.quantity}} &nbsp; &nbsp; &nbsp; &nbsp; <button class="btn btn-secondary btn-sm"
-                        (click)="increaseQuantity(product)">+</button></td>
+                      <td>{{product.quantity}} &nbsp;
+                        <button class="btn btn-secondary btn-sm" (click)="decreaseQuantity(product)">-</button>
+                        &nbsp;
+                        <button class="btn btn-secondary btn-sm" (click)="increaseQuantity(product)">+</button>
+                      </td>
                       <td>{{product.pname}}</td>
                       <td>{{product.cname}}</td>
                       <td>{{product.price * product.quantity}}</td>
@@ -226,7 +229,7 @@
               </div>
               <!-- /.col -->
               <div class="col-6">
-                <p class="lead">Amount Due 2/22/2014</p>
+                <p class="lead">Amount Due 2/22/2022</p>
 
                 <div class="table-responsive">
                   <table class="table">
@@ -236,15 +239,15 @@
                     </tr>
                     <tr>
                       <th>Tax (15%)</th>
-                      <td></td>
+                      <td>{{vat}}</td>
                     </tr>
                     <tr>
                       <th>Shipping:</th>
-                      <td></td>
+                      <td>{{shipping}}</td>
                     </tr>
                     <tr>
                       <th>Total:</th>
-                      <td></td>
+                      <td>{{total}}</td>
                     </tr>
                   </table>
                 </div>
