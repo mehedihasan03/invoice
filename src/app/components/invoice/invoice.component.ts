@@ -29,6 +29,9 @@ export class InvoiceComponent implements OnInit {
   total = 0
   shipping = 0
 
+  isButtonShow = true
+  ddd : any
+
 
   ngOnInit(): void {
   }
@@ -92,6 +95,7 @@ export class InvoiceComponent implements OnInit {
       this.vat = this.subtotal * (15 / 100)
       this.total = this.subtotal + this.vat + this.shipping
        
+      
       if(this.subtotal > 0){
         this.shipping = 100
       }
@@ -133,4 +137,22 @@ export class InvoiceComponent implements OnInit {
     this.selectedProducts.splice(this.selectedProducts.indexOf(pArr), 1)
     this.updateSubtotal()
   }
+
+  toggleButton(){
+    this.isButtonShow = !this.isButtonShow
+  }
+
+  onPrint() {
+    console.log(this.ddd);
+    
+    let printContents = document.getElementById("pdf")!.innerHTML;
+    let originalContents = document.body.innerHTML;
+   // document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    console.log(this.ddd + "ujfhugh");
+    
+  }
+
+  
 }

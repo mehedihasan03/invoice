@@ -1,5 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+<div class="" id="pdf">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -26,7 +27,7 @@
                 <h5>
                   <i class="fas fa-globe"></i> NCLC JEE-47
                   <small class="float-right">
-                    <input type="datetime-local" name="date" id="date">
+                    <input type="datetime-local"[(ngModel)]="ddd" name="ddd" id="ddd">
                   </small>
                 </h5>
               </div>
@@ -50,7 +51,7 @@
                 <!-- /Modal Start-->
                 <br />
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+                <button *ngIf="isButtonShow" type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
                   (click)="getAllCustomer()" data-bs-target="#exampleModal">
                   Add Customer
                 </button>
@@ -112,7 +113,8 @@
               </div>
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
-                <b>Invoice #007612</b><br>
+                <br>
+                <b>Invoice #007612</b>
                 <br>
                 <b>Order ID:</b> 4F3S8J<br>
                 <b>Payment Due:</b> 2/22/2022<br>
@@ -123,7 +125,7 @@
             <!-- /.row -->
             
             <!-- Table row -->
-            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-xl"
+            <button *ngIf="isButtonShow"  type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-xl"
               (click)="getAllProduct()">
               Add Product
             </button>
@@ -193,15 +195,15 @@
                   <tbody>
                     <tr *ngFor="let product of selectedProducts; index as i;">
                       <td>{{product.quantity}} &nbsp;
-                        <button class="btn btn-secondary btn-sm" (click)="decreaseQuantity(product)">-</button>
+                        <button *ngIf="isButtonShow" class="btn btn-secondary btn-sm" (click)="decreaseQuantity(product)">-</button>
                         &nbsp;
-                        <button class="btn btn-secondary btn-sm" (click)="increaseQuantity(product)">+</button>
+                        <button *ngIf="isButtonShow" class="btn btn-secondary btn-sm" (click)="increaseQuantity(product)">+</button>
                       </td>
                       <td>{{product.pname}}</td>
                       <td>{{product.cname}}</td>
                       <td>{{product.price * product.quantity}}</td>
                       <td>
-                        <button type="button" class="btn btn-danger" (click)="removeProduct(product)">Remove</button>
+                        <button *ngIf="isButtonShow" type="button" class="btn btn-danger" (click)="removeProduct(product)">Remove</button>
                       </td>
                     </tr>
 
@@ -216,9 +218,9 @@
               <!-- accepted payments column -->
               <div class="col-6">
                 <p class="lead">Payment Methods:</p>
-                <img src="/assets/dist/img/credit/visa.png" alt="Visa">
-                <img src="/assets/dist/img/credit/mastercard.png" alt="Mastercard">
-                <img src="/assets/dist/img/credit/american-express.png" alt="American Express">
+                <img src="/assets/dist/img/credit/visa.png" alt="Visa"> &nbsp;
+                <img src="/assets/dist/img/credit/mastercard.png" alt="Mastercard">&nbsp;
+                <img src="/assets/dist/img/credit/american-express.png" alt="American Express">&nbsp;
                 <img src="/assets/dist/img/credit/paypal2.png" alt="Paypal">
 
                 <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
@@ -229,7 +231,7 @@
               </div>
               <!-- /.col -->
               <div class="col-6">
-                <p class="lead">Amount Due 2/22/2022</p>
+                
 
                 <div class="table-responsive">
                   <table class="table">
@@ -246,7 +248,7 @@
                       <td>{{shipping}}</td>
                     </tr>
                     <tr>
-                      <th>Total:</th>
+                      <th (click)='toggleButton()'>Total:</th>
                       <td>{{total}}</td>
                     </tr>
                   </table>
@@ -259,8 +261,9 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
               <div class="col-12">
-                <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
-                    class="fas fa-print"></i> Print</a>
+                <button (click)="onPrint()" class="btn btn-default"><i
+                  class="fas fa-print"></i>Print</button>
+                
                 <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                   Payment
                 </button>
@@ -275,6 +278,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
+</div>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
