@@ -51,7 +51,7 @@
                 <!-- /Modal Start-->
                 <br />
                 <!-- Button trigger modal -->
-                <button *ngIf="isButtonShow" type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal"
+                <button type="button" class="btn btn-outline-dark btn-sm no-print" data-bs-toggle="modal"
                   (click)="getAllCustomer()" data-bs-target="#exampleModal">
                   Add Customer
                 </button>
@@ -125,7 +125,7 @@
             <!-- /.row -->
             
             <!-- Table row -->
-            <button *ngIf="isButtonShow"  type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-xl"
+            <button type="button" class="btn btn-outline-info no-print" data-toggle="modal" data-target="#modal-xl"
               (click)="getAllProduct()">
               Add Product
             </button>
@@ -189,21 +189,21 @@
                       <th>Product name</th>
                       <th>Category</th>
                       <th>price</th>
-                      <th>Action</th>
+                      <th class="no-print">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let product of selectedProducts; index as i;">
                       <td>{{product.quantity}} &nbsp;
-                        <button *ngIf="isButtonShow" class="btn btn-secondary btn-sm" (click)="decreaseQuantity(product)">-</button>
+                        <button class="btn btn-secondary btn-sm no-print" (click)="decreaseQuantity(product)">-</button>
                         &nbsp;
-                        <button *ngIf="isButtonShow" class="btn btn-secondary btn-sm" (click)="increaseQuantity(product)">+</button>
+                        <button class="btn btn-secondary btn-sm no-print" (click)="increaseQuantity(product)">+</button>
                       </td>
                       <td>{{product.pname}}</td>
                       <td>{{product.cname}}</td>
                       <td>{{product.price * product.quantity}}</td>
-                      <td>
-                        <button *ngIf="isButtonShow" type="button" class="btn btn-danger" (click)="removeProduct(product)">Remove</button>
+                      <td class="no-print">
+                        <button type="button" class="btn btn-danger no-print" (click)="removeProduct(product)">Remove</button>
                       </td>
                     </tr>
 
@@ -214,7 +214,7 @@
             </div>
             <!-- /.row -->
 
-            <div class="row">
+            <div class="row mt-5">
               <!-- accepted payments column -->
               <div class="col-6">
                 <p class="lead">Payment Methods:</p>
@@ -248,7 +248,7 @@
                       <td>{{shipping}}</td>
                     </tr>
                     <tr>
-                      <th (click)='toggleButton()'>Total:</th>
+                      <th>Total:</th>
                       <td>{{total}}</td>
                     </tr>
                   </table>
@@ -259,17 +259,18 @@
             <!-- /.row -->
 
             <!-- this row will not appear when printing -->
-            <div class="row no-print">
-              <div class="col-12">
-                <button (click)="onPrint()" class="btn btn-default"><i
+            <div class="row no-print mt-5">
+              <div class="col-11">
+                <button (click)="onPrint()" class="btn btn-lg btn-secondary float-end"><i
                   class="fas fa-print"></i>Print</button>
-                
+ <!--               
                 <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                   Payment
                 </button>
                 <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                   <i class="fas fa-download"></i> Generate PDF
                 </button>
+              -->
               </div>
             </div>
           </div>

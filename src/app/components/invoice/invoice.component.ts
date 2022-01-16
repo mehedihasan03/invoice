@@ -138,10 +138,6 @@ export class InvoiceComponent implements OnInit {
     this.updateSubtotal()
   }
 
-  toggleButton(){
-    this.isButtonShow = !this.isButtonShow
-  }
-
   onPrint() {
     console.log(this.ddd);
     

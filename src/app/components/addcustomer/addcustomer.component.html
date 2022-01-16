@@ -7,7 +7,7 @@
         <div class="card-body">
           <p class="login-box-msg"><b>Add a new Customer</b></p>
     
-          <form (ngSubmit)="saveCustomer()">
+          <form (ngSubmit)="isSave? saveCustomer() : updateCustomer()">
             <div class="input-group mb-3">
               <input type="text" id="name" name="name" class="form-control" [(ngModel)]="customer.name" placeholder="Full name">
               <div class="input-group-append">

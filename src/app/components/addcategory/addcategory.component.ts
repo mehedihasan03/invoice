@@ -26,7 +26,6 @@ export class AddcategoryComponent implements OnInit {
   }
 
   addCategory(){
-    
     const headers = { 'content-type': 'application/json' };
     this.http.post<any>("http://localhost:9988/category/save", JSON.stringify(this.category), { headers: headers })
       .subscribe(data => {
