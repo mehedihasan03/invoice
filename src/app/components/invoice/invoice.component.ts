@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { ProductInvoice } from './invoice.model';
+import { invoiceData } from './invoicedata.model';
 
 
 
@@ -15,6 +16,7 @@ export class InvoiceComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  invoiceData = new invoiceData()
   productInvoice = new ProductInvoice()
   customers: any
   customer: any
@@ -23,15 +25,12 @@ export class InvoiceComponent implements OnInit {
   searchQueryCustomer: any
   searchQueryProduct: any
   selectedProducts: ProductInvoice[] = []
-
   subtotal = 0
   vat = 0
   total = 0
   shipping = 0
 
   isButtonShow = true
-  ddd : any
-
 
   ngOnInit(): void {
   }
@@ -94,18 +93,18 @@ export class InvoiceComponent implements OnInit {
       this.subtotal += element.price * element.quantity;
       this.vat = this.subtotal * (15 / 100)
       this.total = this.subtotal + this.vat + this.shipping
-       
-      
-      if(this.subtotal > 0){
+
+
+      if (this.subtotal > 0) {
         this.shipping = 100
       }
-      if(this.subtotal > 10000){
+      if (this.subtotal > 10000) {
         this.shipping = 300
       }
-      if(this.subtotal > 50000){
+      if (this.subtotal > 50000) {
         this.shipping = 500
       }
-      if(this.subtotal > 100000){
+      if (this.subtotal > 100000) {
         this.shipping = 800
       }
     });
@@ -139,16 +138,32 @@ export class InvoiceComponent implements OnInit {
   }
 
   onPrint() {
-    console.log(this.ddd);
-    
+    this.saveInvoice()
+    console.log(this.invoiceData.paymentDate);
+
     let printContents = document.getElementById("pdf")!.innerHTML;
     let originalContents = document.body.innerHTML;
-   // document.body.innerHTML = printContents;
+    // document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
-    console.log(this.ddd + "ujfhugh");
-    
+    console.log(this.invoiceData.paymentDate + "ujfhugh");
+
   }
 
-  
+  saveInvoice() {
+    this.invoiceData.totalPrice = this.total
+    this.invoiceData.customerName = this.customer.name
+    const headers = { 'content-type': 'application/json' };
+    this.http.post<any>("http://localhost:9988/invoice/save", JSON.stringify(this.invoiceData), { headers: headers })
+      .subscribe(map => {
+        console.log(map.Data);
+
+        alert("Invoice created Successfull")
+        // this.category = new Category();    
+      }, err => {
+        alert("Invalid invoice")
+      }
+      )
+  }
+
 }
