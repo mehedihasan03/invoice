@@ -8,6 +8,7 @@ import { CategorylistComponent } from './components/categorylist/categorylist.co
 import { CustomerlistComponent } from './components/customerlist/customerlist.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { InvoicelistComponent } from './components/invoicelist/invoicelist.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
     {path: "invoice", component: InvoiceComponent}, {path: "categoryList", component: CategorylistComponent},
     {path: "addProduct", component: AddproductComponent}, {path: "productList", component: ProductlistComponent},
     {path: "calender", component: CalenderComponent}, {path: "addCustomer", component: AddcustomerComponent},
-    {path: "customerList", component: CustomerlistComponent}
+    {path: "customerList", component: CustomerlistComponent}, {path: "invoiceList", component: InvoicelistComponent}
   ]}
 ];
 

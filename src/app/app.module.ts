@@ -19,6 +19,7 @@ import { AddcategoryComponent } from './components/addcategory/addcategory.compo
 import { CalenderComponent } from './components/calender/calender.component';
 import { AddcustomerComponent } from './components/addcustomer/addcustomer.component';
 import { CustomerlistComponent } from './components/customerlist/customerlist.component';
+import { InvoicelistComponent } from './components/invoicelist/invoicelist.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CustomerlistComponent } from './components/customerlist/customerlist.co
     AddcategoryComponent,
     CalenderComponent,
     AddcustomerComponent,
-    CustomerlistComponent
+    CustomerlistComponent,
+    InvoicelistComponent
   ],
   imports: [
     BrowserModule,

@@ -31,23 +31,17 @@ searchQuery:any
     const headers = { 'content-type': 'application/json' };
     this.http.get<any>('http://localhost:9988/product/getAll', { headers })
       .subscribe(map => {
-
         this.products = map.Data;
-
       })
   }
 
   editProduct(pro: any) {
-
     this.product.pname = pro.pname
     this.product.cname = pro.cname
     this.product.price = pro.price
     console.log(this.product);
-    
-
     this.router.navigate(['addProduct'], { state: { prod: pro, isSave: false } })
   }
-
 
   deleteProduct(pro: any) {
     const headers = { 'content-type': 'application/json' };
@@ -57,5 +51,4 @@ searchQuery:any
       }
       )
   }
-
 }
