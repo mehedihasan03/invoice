@@ -114,21 +114,16 @@
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
                 <br>
-                <b>Invoice #007612</b>
+                <b>Invoice: </b>
                 <br>
-                <b>Order ID:</b> 4F3S8J<br>
-                <b>Payment Due:</b> 2/22/2022<br>
-                <b>Account:</b> 968-34567
+                <b>Account:</b> 968-345-9867
               </div>
               <!-- /.col -->
             </div>
             <!-- /.row -->
             
             <!-- Table row -->
-            <button type="button" class="btn btn-outline-info no-print" data-toggle="modal" data-target="#modal-xl"
-              (click)="getAllProduct()">
-              Add Product
-            </button>
+            
 
             <div class="">
               <div class="modal fade" id="modal-xl">
@@ -178,6 +173,7 @@
               </div>
               <!-- /.modal -->
             </div>
+            
 
 
             <div class="row">
@@ -213,6 +209,10 @@
               <!-- /.col -->
             </div>
             <!-- /.row -->
+            <button type="button" class="btn btn-outline-info no-print" data-toggle="modal" data-target="#modal-xl"
+              (click)="getAllProduct()">
+              Add Product
+            </button>
 
             <div class="row mt-5">
               <!-- accepted payments column -->
@@ -237,19 +237,19 @@
                   <table class="table">
                     <tr>
                       <th style="width:50%">Subtotal:</th>
-                      <td>{{subtotal}}</td>
+                      <td>{{subtotal}}/-</td>
                     </tr>
                     <tr>
                       <th>Tax (15%)</th>
-                      <td>{{vat}}</td>
+                      <td>{{vat}}/-</td>
                     </tr>
                     <tr>
                       <th>Shipping:</th>
-                      <td>{{shipping}}</td>
+                      <td>{{shipping}}/-</td>
                     </tr>
                     <tr>
                       <th>Total:</th>
-                      <td>{{total}}</td>
+                      <td>{{total}}/-</td>
                     </tr>
                   </table>
                 </div>
