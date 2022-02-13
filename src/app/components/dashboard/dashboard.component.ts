@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   totalSaleOfMonth: any
   totalCustomer: any
   totalCountProduct: any
+  totalCountCategory: any
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
     this.totalSaleOfCurrentMonth()
     this.totalCustomerCount()
     this.totalProductCount()
+    this.totalCategoryCount()
   }
 
   totalSaleOfCurrentMonth() {
@@ -41,6 +43,14 @@ export class DashboardComponent implements OnInit {
     this.http.get<any>('http://localhost:9988/product/count-product', { headers })
       .subscribe(map => {
         this.totalCountProduct = map.Data;
+      })
+  }
+
+  totalCategoryCount() {
+    const headers = { 'content-type': 'application/json' };
+    this.http.get<any>('http://localhost:9988/category/count-category', { headers })
+      .subscribe(map => {
+        this.totalCountCategory = map.Data;
       })
   }
 }
