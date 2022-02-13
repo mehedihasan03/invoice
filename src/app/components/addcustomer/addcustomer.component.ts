@@ -29,6 +29,7 @@ export class AddcustomerComponent implements OnInit {
     this.http.post<any>("http://localhost:9988/customer/save", JSON.stringify(this.customer), { headers: headers })
       .subscribe(data => {
         alert("New Customer Added Successfull")
+        this.sendEmail()
         this.customer = new Customer();
         this.isSave = true
       }, err => {
@@ -46,5 +47,15 @@ export class AddcustomerComponent implements OnInit {
         this.isSave = true
       }
       )
+  }
+
+  sendEmail(){
+    const to = {
+      "receiver" : this.customer.email
+  }
+    const header = {'content-type': 'application/json'}
+    this.http.post<any>("http://localhost:9988/sendCustomerEmail", to, {headers:header}).subscribe(res=>{
+      console.log(res);      
+    })
   }
 }

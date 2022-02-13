@@ -16,7 +16,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   saveUser(){
     if (this.user.password == this.user.repassword) {
       const headers = { 'content-type': 'application/json' };
@@ -24,8 +23,7 @@ export class SignupComponent implements OnInit {
         .subscribe(data => {
         alert("Registrtion successfull")
         this.sendEmail()
-        this.user = new User();
-        
+        this.user = new User();        
         },err =>{
           alert(err.error.text)
        }
@@ -40,10 +38,8 @@ export class SignupComponent implements OnInit {
       "receiver" : this.user.email
   }
     const header = {'content-type': 'application/json'}
-    this.http.post<any>("http://localhost:9988/sendAnEmail", to, {headers:header}).subscribe(res=>{
-      console.log(res);
-      
+    this.http.post<any>("http://localhost:9988/sendUserEmail", to, {headers:header}).subscribe(res=>{
+      console.log(res);      
     })
-
   }
 }
