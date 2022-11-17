@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { User } from './signup.model';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   user = new User()
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router :Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,8 @@ export class SignupComponent implements OnInit {
         .subscribe(data => {
         alert("Registrtion successfull")
         this.sendEmail()
-        this.user = new User();        
+        this.user = new User();
+        this.router.navigate(["login"])
         },err =>{
           alert(err.error.text)
        }

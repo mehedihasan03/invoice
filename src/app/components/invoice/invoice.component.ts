@@ -135,6 +135,8 @@ export class InvoiceComponent implements OnInit {
   removeProduct(pArr: any) {
     this.selectedProducts.splice(this.selectedProducts.indexOf(pArr), 1)
     this.updateSubtotal()
+    this.vat = this.subtotal * (15 / 100)
+    this.total = this.subtotal + this.vat + this.shipping
   }
 
   onPrint() {
